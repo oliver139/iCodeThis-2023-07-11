@@ -29,7 +29,12 @@ svg {
   fill: var(--color2);
 }
 
+h1, p {
+  line-height: 1.25;
+}
+
 button {
+  cursor: pointer;
   border: none;
   background: none;
   padding: 0;
@@ -44,30 +49,36 @@ body {
 }
 
 main {
-  --padding-size: 8rem;
-  display: grid;
-  grid-template-columns: 30% auto;
-  gap: 4rem;
+  --padding-size: 6rem;
+  display: flex;
+  flex-flow: row nowrap;
+  position: relative;
   width: min(80rem, 100%);
   max-height: 100%;
   border: 1px solid var(--color2);
+  isolation: isolate;
 }
 
 .cheers {
+  text-align: center;
+  flex: 0 1 40%;
+  align-self: center;
   overflow: hidden;
-  padding: var(--padding-size);
-  padding-right: 0;
-  .beer svg {
-    color: var(--color1);
-    fill: var(--color1);
-    .color-path {
-      fill: var(--color2);
+  .beer {
+    display: inline-block;
+    width: 70%;
+    svg {
+      color: var(--color1);
+      fill: var(--color1);
+      .color-path {
+        fill: var(--color2);
+      }
     }
   }
 }
 
 .form {
-  height: 100%;
+  flex: 1 1 auto;
   padding: var(--padding-size);
   padding-left: 0;
   overflow: auto;
@@ -147,6 +158,9 @@ main {
   .pay-info {
     margin-top: 2rem;
     .field-row {
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 1.5rem 2rem;
       + .field-row {
         margin-top: 1.5rem;
       }
@@ -155,15 +169,87 @@ main {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
-    input {
+    input, select {
       color: var(--color2);
       font-family: "Roboto Slab", "Merriweather", sans-serif;
       background: var(--btn-sub);
       border: .125rem solid var(--color2);
       padding: .75rem 1rem;
     }
-    #cardId {
+    input {
       width: 100%;
+    }
+    select + select {
+      margin-left: 0.5rem;
+    }
+    .card-id {
+      flex: 1 1 auto;
+    }
+    :is(.exp-date, .cvc) {
+      select, input {
+        width: 6.375rem;
+      }
+    }
+  }
+
+  .agreement {
+    margin: 0;
+    margin-top: 1.5rem;
+  }
+
+  .confirm-btn {
+    color: var(--color1);
+    width: 20rem;
+    background: var(--color2);
+    border: .125rem solid var(--color2);
+    margin-top: 2.5rem;
+    padding: 1rem 5rem;
+  }
+}
+
+@media screen and (width <= 65em) {
+  .cheers {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: max(12rem,30%);
+    opacity: 0.3;
+    z-index: -1;
+    .beer {
+      width: auto;
+    }
+  }
+  .form {
+    padding: var(--padding-size);
+  }
+}
+
+@media screen and (width <= 48em) {
+  main {
+    --padding-size: 4rem;
+  }
+}
+
+@media screen and (width <= 36em) {
+  main {
+    --padding-size: 2rem;
+  }
+}
+@media screen and (width <= 30em) {
+  .form {
+    .pay-info {
+      .field-row {
+        flex-flow: column nowrap;
+      }
+      .exp-date .input-group {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 1rem;
+        select {
+          flex: 1 1 50%;
+          margin: 0;
+        }
+      }
     }
   }
 }
