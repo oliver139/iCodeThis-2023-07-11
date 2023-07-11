@@ -198,6 +198,34 @@ main {
   padding: 1rem 5rem;
 }
 
+.msg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--color2);
+  padding: 1rem;
+  transition: translate 0.3s ease;
+}
+.msg p {
+  color: var(--color1);
+  text-align: center;
+  margin: 0;
+}
+.msg button {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  height: 2rem;
+  transform: translateY(-50%);
+}
+.msg button svg {
+  fill: var(--color1);
+}
+.msg.hide {
+  translate: 0 -100%;
+}
+
 @media screen and (width <= 65em) {
   .cheers {
     position: absolute;
