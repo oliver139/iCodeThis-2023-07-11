@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@1,700&display=swap');
+
+html {
+  --color1: #0a0a0a;
+  --color2: #fff;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  color: var(--color2);
+  font-family: "Merriweather", "Times New Roman", serif;
+  height: 100%;
+  background: var(--color1);
+}
+img, svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+svg {
+  color: var(--color2);
+  fill: var(--color2);
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+main {
+  --padding-size: 8rem;
+  display: grid;
+  grid-template-columns: 30% auto;
+  gap: 4rem;
+  width: min(80rem, 100%);
+  max-height: 100%;
+  border: 1px solid var(--color2);
+}
+
+.cheers {
+  overflow: hidden;
+  padding: var(--padding-size);
+  padding-right: 0;
+  .beer svg {
+    color: var(--color1);
+    fill: var(--color1);
+    .color-path {
+      fill: var(--color2);
+    }
+  }
+}
+
+.form {
+  height: 100%;
+  padding: var(--padding-size);
+  padding-left: 0;
+  overflow: auto;
+  .step {
+    font-size: 1rem;
+    font-family: "Roboto Slab", "Merriweather", sans-serif;
+  }
+
+  h1 {
+    margin-bottom: .75rem;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 2.5rem;
+  }
+
+  .pay-method {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16.25rem, 1fr));
+    gap: 1.5rem 2.5rem;
+    label {
+      cursor: pointer;
+    }
+    input[type=radio] {
+      display: none;
+    }
+    button {
+      --btn-main: var(--color2);
+      --btn-sub: var(--color1)
+      color: var(--btn-main);
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      background: var(--btn-sub);
+      border: .125rem solid var(--color2);
+      padding: 1rem 2rem;
+      pointer-events: none;
+      svg {
+        fill: var(--btn-main);
+      }
+      .icon-holder {
+        height: 2.5rem;
+      }
+      .method-name {
+        color: var(--btn-main);
+        font-size: 1.5rem;
+        font-family: "Lobster Two", sans-serif;
+        font-weight: 300;
+        margin-left: 1rem;
+      }
+      .tickbox {
+        margin-left: auto;
+        > * {
+          height: 1.5rem;
+        }
+        .tick-on {
+          display: none;
+        }
+      }
+    }
+    input:checked + button {
+      --btn-main: var(--color1);
+      --btn-sub: var(--color2);
+      .tickbox {
+        .tick-on {
+          display: block;
+        }
+        .tick-off {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .pay-info {
+    margin-top: 2rem;
+    .field-row {
+      + .field-row {
+        margin-top: 1.5rem;
+      }
+    }
+    label {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    input {
+      color: var(--color2);
+      font-family: "Roboto Slab", "Merriweather", sans-serif;
+      background: var(--btn-sub);
+      border: .125rem solid var(--color2);
+      padding: .75rem 1rem;
+    }
+    #cardId {
+      width: 100%;
+    }
+  }
+}
